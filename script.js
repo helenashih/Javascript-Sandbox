@@ -21,3 +21,20 @@ console.log(`Diff of x and y ${x} - ${y} = ${x-y}`);
 console.log(`Product of x and y ${x} * ${y} = ${x*y}`);
 console.log(`Quotient of x and y ${x} / ${y} = ${x/y}`);
 console.log(`Remainder of x and y ${x} % ${y} = ${x%y}`);
+
+
+// create a function that generates unique random numbers
+
+const randomID = (() => {
+    function* randomIDGenerator() {
+      let id = Date.now();
+      
+      while(true) {
+        yield id++;
+      }
+    }
+    
+    const gen = randomIDGenerator();
+    
+    return () => gen.next().value;
+  })()
