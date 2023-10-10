@@ -225,5 +225,71 @@ const libString = JSON.stringify(library);
 
 console.log(libString); // [{"title":"Little Women","author":"Louisa May Alcott","status":{"own":true,"reading":false,"read":true}},{"title":"Mockingjay","author":"Suzanne Collins","status":{"own":true,"reading":false,"read":true}},{"title":"Nobodys fool","author":"Richard Russo","status":{"own":true,"reading":false,"read":true}}]
 
+// use of rest parameters
+
+function sum(...numbers) {
+    let total = 0;
+    for (const i of numbers) {
+        total += i;
+    }
+    return total;
+}
+
+console.log(sum(1, 2, 3, 4, 5, 6));
+
+// use arrow function to implement sum
+
+const add = (...numbers) => {
+    let total = 0;
+    for (const i of numbers) {
+        total += i;
+    }
+    return total;
+}
+
+console.log(add(1, 2, 3, 4, 5, 6, 7)); // 28
+
+// another arrow function example with implicit return statement
+
+const subtract = (a, b) => a - b; 
+
+console.log(subtract(10, 7)); // 3
+
+// some IIFE (immediatly invoked function expression) examples
+
+// 1 with no parameters
+
+(function() {
+    const user = 'John Smith';
+    console.log(user); // John Smith
+    const hello = () => {console.log('Hello with IIFE')} //Hello with IIFE
+    hello();
+}) ();
+
+// 2 with one parameter
+
+(function( name ){
+    console.log('Hello ' + name);
+})('Jane Fonda'); // Hello Jane Fonda
+
+// create an arrow function called getCelcius and pass in Fahrenheit
+const getCelcius = (fDegree) => { return (fDegree - 32)*5/9; } 
+
+console.log('75 degree F is ' + getCelcius(75) + 'in C'); //75 degree F is 23.88888888888889in C
+
+// create a function called minMax() that takes an array of numbers and return an obj of min and max in the array
+const minMax = (arr) => {
+    let min = Math.min(...arr);
+    let max = Math.max(...arr);
+    return  new Object({min: min, max: max});
+}
+console.log(minMax([1, 2, 3, 4, 5, 6, 7]));
 
 
+// create an IIFE that takes the length and width of an rectangle outputs it to the console as soon as the page loads
+
+(function (length, width) {
+    console.log('Length = ' + length + ' Width = ' + width + ' and Area is ' + length*width);
+}) (10, 20); // Length = 10 Width = 20 and Area is 200
+
+// 
