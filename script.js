@@ -182,7 +182,7 @@ console.log(`Object entries in key-value pairs ${Object.entries(person)}`); // O
 
 // destructure arrays
 
-const numbers = [23, 55, 88, 68, 93];
+let numbers = [23, 55, 88, 68, 93];
 
 const [first, second, third, ...remainders] = numbers;
 
@@ -292,4 +292,263 @@ console.log(minMax([1, 2, 3, 4, 5, 6, 7]));
     console.log('Length = ' + length + ' Width = ' + width + ' and Area is ' + length*width);
 }) (10, 20); // Length = 10 Width = 20 and Area is 200
 
-// 
+// Switch statement example
+
+const d = new Date(2023, 4, 10, 19, 55, 0);
+const month = d.getMonth();
+const hour = d.getHours();
+
+switch (month) {
+    case 1: 
+    case 2: 
+    case 3: 
+        console.log('Boy it is cold out there! I despise winter season.');
+        break;
+    case 4: 
+    case 5: 
+    case 6:
+        console.log('Look at all the flowers. I love spring!');
+        break;
+    case 7: 
+    case 8: 
+    case 9: 
+        console.log('It is swimming time. Summer is the best.');
+        break;
+    default: 
+        console.log('Let us go hiking and enjoy fall coloring.');
+}
+
+switch (true) {
+    case hour < 12: 
+        console.log('Good Morning!');
+        break;
+    case hour < 18: 
+        console.log('Good Afternoon!');
+        break;
+    default: 
+        console.log('Good Night.');
+    }
+
+// Create a calculator function that takes three parameters: num1, num2, and operator +, -, *, / and return the result. Otherwise, print an error
+
+function calculator(num1, num2, operator) {
+    switch (operator) {
+        case '+': 
+            return num1 + num2;
+        case '-': 
+            return num1 - num2;
+        case '*': 
+            return num1 * num2;
+        case '/': 
+            return num1 / num2;
+        default: 
+            return 'Invalid operator error';
+    }
+}
+
+const num1 = 8;
+const num2 = 5;
+console.log(`${num1} + ${num2} = ${calculator(num1, num2, '+')}`); // 8 + 5 = 13
+console.log(`${num1} - ${num2} = ${calculator(num1, num2, '-')}`); // 8 - 5 = 3    
+console.log(`${num1} * ${num2} = ${calculator(num1, num2, '*')}`); // 8 * 5 = 40
+console.log(`${num1} / ${num2} = ${calculator(num1, num2, '/')}`); // 8 / 5 = 1.6
+console.log(`${num1} % ${num2} = ${calculator(num1, num2, '%')}`); // 8 % 5 = Invalid operator error
+
+// Check if something is an empty object
+
+const isEmptyObj = (obj) => {
+    if (obj && Object.keys(obj).length > 0) {
+        return false;
+    } else {
+        
+        return true;
+    }
+}
+let something = {name: 'Karen'};
+if (isEmptyObj(something)) {
+    console.log('\'something\' is empty');
+} else {
+    console.log('\'something\' is not empty');
+}
+
+// Some examples for logical operators
+// && will return the first false value or the last value
+console.log( 10 && 20); // 20
+console.log( 10 && 20 && 30); // 30
+console.log( 10 && 0 && 30); // 0
+console.log( 10 && '' && 0 && 30); // ''
+
+// || will return the first true value or the last value
+console.log( 10 || 20); // 10
+console.log( 0 || 20 || 30); // 20
+console.log( 0 || null || '' || undefined); // undefined
+
+// ?? returns the right side operand when the left is null or undefined
+console.log( 10 ?? 20 ); // 10
+console.log( null ?? 20); // 20
+console.log( undefined ?? 20); // 20
+console.log( 0 ?? 20); // 0
+
+// ||= assigns the right side value only if the left is a false value
+let a = 0;
+console.log( a ||= 10); // 10
+a = 10;
+console.log( a ||= 10); // 10
+a = 20;
+console.log( a ||= 10); // 20
+
+// &&= assigns the right side value only if the left is a true value
+a = 0;
+console.log( a &&= 10); // 0
+a = 10;
+console.log( a &&= 10); // 10
+a = 20;
+console.log( a &&= 10); // 10
+
+// ??= assigns the right side value only if the left is null or undefined
+a = null;
+console.log( a ??= 10); // 10
+a = undefined;
+console.log( a ??= 10); // 10
+a = 20;
+console.log( a ??= 10); // 20
+
+// use a ternary operator = simpler way of if statement
+let age = 19;
+age >= 18 ? console.log('You can vote') : console.log('You cannot vote');
+
+const auth = true;
+
+const redirect = auth 
+    ? (alert('Welcome to My App'), '/myapp')
+    : (alert('Access denied'), 'login');
+
+// and you can do
+auth && console.log('Welcome to My App'); // if auth === false, null
+
+// loop thru an array
+let names = [{name: 'John'}, {name: 'Sara'}, {name: 'Mary'}, {name: 'Tim'}, {name: 'Jason'}];
+names.forEach( (n) => console.log(`Hello, my name is ${n.name}`));
+
+// another way to loop thru array
+for (const n of names) {
+    console.log(`Hello my name is ${n.name}`);
+}
+
+// loop thru the map object
+let m = new Map();
+m.set('id', 1);
+m.set('name', 'Jane Doe');
+m.set('age', 33);
+for (const [key, value] of m) {
+    console.log(key, value);
+}
+// FizzBuzz challenge 3 = Fizz 5 = Buzz 3 && 5 = FizzBuzz
+/*
+for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+        console.log('FizzBuzz');
+    } else if (i % 3 === 0) {
+        console.log('Fizz');
+    } else if (i % 5 === 0) {
+        console.log('Buzz');
+    } else {
+        console.log(i);
+    }
+}
+*/
+
+// loop thru an object
+const fruitObj = {
+    fruit1: 'apple',
+    fruit2: 'orange',
+    fruit3: 'pear',
+    fruit4: 'peach',
+};
+
+for (const key in fruitObj) {
+    console.log(key, fruitObj[key]);
+}
+
+// array filter method
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// find all the odd numbers
+let oddNumbers = numbers.filter( element => element % 2 === 1);
+console.log(oddNumbers);
+
+// Challenge: get only the retail companies
+const companies = [
+    { name: 'Company One', category: 'Finance', start: 1981, end: 2004},
+    { name: 'Company Two', category: 'Retail', start: 1992, end: 2007},    
+    { name: 'Company Three', category: 'Auto', start: 1999, end: 2014},    
+    { name: 'Company Four', category: 'Retail', start: 1967, end: 2008},
+    { name: 'Company Five', category: 'Technology', start: 2001, end: 2003},
+    { name: 'Company Six', category: 'Finance', start: 1977, end: 1988},
+    { name: 'Company Seven', category: 'Auto', start: 1953, end: 2011},
+    { name: 'Company Eight', category: 'Technology', start: 1997, end: 2001},
+    { name: 'Company Nine', category: 'Retail', start: 1933, end: 2001},
+];
+
+let retailers = companies.filter (company => company.category === 'Retail');
+console.log(retailers);
+
+// Get companies that started in or after 1980 and ended in or before 2005
+let results = companies.filter (company => company.start >= 1980 && company.end <= 2005 );
+console.log(results);
+
+// Get companies that lasted 10 years or more
+results = companies.filter(company => company.end - company.start >= 10);
+console.log(results);
+
+// Map and array objects
+const numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const doubledNumbers = numbers2.map( (numbers2) => numbers2 * 2);
+console.log(doubledNumbers);
+
+// same with forEach
+const doubledNumbers2 = [];
+numbers2.forEach( (numbers2) => { doubledNumbers2.push(numbers2 * 2); });
+console.log(doubledNumbers2);
+
+// Create an array of company names
+const companyNames = companies.map ((company) => company.name);
+console.log(companyNames);
+
+// Create an array of obj {companynames , category}
+const companyInfo = companies.map((company) => {
+    return {
+        name: company.name,
+        category: company.category
+    }
+});
+
+console.log(companyInfo);
+
+// Create an array of objects with the names and length of each company in years
+
+const companyYears = companies.map((company) => {
+    return {
+        name: company.name,
+        years: company.end - company.start
+    }
+});
+console.log(companyYears);
+
+// Chain map methods
+const squareAndDouble = numbers2.map((number) => Math.sqrt(number) * 2);
+console.log(squareAndDouble);   
+
+// chaining different methods with filter: find all the even numbers and double them
+const evenDoubled = numbers
+    .filter( (number) => number % 2 === 0)
+    .map((number) => number * 2);
+
+console.log(evenDoubled);
+
+// Example of Array.reduce(). Take an array of numbers and reduce it to a total
+const sumNumbers = numbers2.reduce((accumulator, currentValue) => { 
+    return accumulator + currentValue;
+}, 0); // 0 is initial value
+
+console.log(sumNumbers);
